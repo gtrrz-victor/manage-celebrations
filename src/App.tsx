@@ -215,6 +215,7 @@ function App() {
             alt="We are ready!"
             loading="lazy"
           />
+          <h2>Que sepas que...</h2>
           <h2>Ya estamos plantando cena!</h2>
           <img
             style={{
@@ -228,7 +229,8 @@ function App() {
             alt="Getting the product ready!"
             loading="lazy"
           />
-          <h2>No te preocupes que no pasaras hambre</h2>{" "}
+          <h2>No te preocupes...</h2>
+          <h2>que no pasaras hambre</h2>
           <img
             style={{
               border: "1px solid #ddd",
