@@ -74,20 +74,34 @@ function App() {
   const { Item: guest } = userQuery.data;
   return (
     <div>
-      <CssBaseline />
-      <Container maxWidth="sm">
-        <Box
-          display="flex"
-          justifyContent="start"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <h1>Merendola</h1>
-          <h2>
-            <strong>28</strong> de Diciembre{" "}
-          </h2>
+      {!hasBeenSent && (
+
+        <Box display='flex' justifyContent='center'>
+          <img
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+            src="/assets/cover.png"
+            alt="We are ready!"
+            loading="lazy"
+          />
         </Box>
-        {!hasBeenSent && (
+      )}
+      <CssBaseline />
+      <Container maxWidth="sm" style={{ padding: '10px' }}>
+        {!hasBeenSent && (<>
+          <Box
+            display="flex"
+            justifyContent="start"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <h1>Merendola</h1>
+            <h2>
+              28 de Diciembre
+            </h2>
+          </Box>
           <Box
             display="flex"
             justifyContent="start"
@@ -196,6 +210,7 @@ function App() {
               </Button>
             </Box>
           </Box>
+        </>
         )}
       </Container>{" "}
       <Slide direction="up" in={hasBeenSent} unmountOnExit>
@@ -220,7 +235,7 @@ function App() {
             loading="lazy"
           />
           <h2>Que sepas que...</h2>
-          <h2>Ya estamos plantando cena!</h2>
+          <h2>Ya estamos plantando la cena!</h2>
           <img
             style={{
               border: "1px solid #ddd",
@@ -233,7 +248,7 @@ function App() {
             alt="Getting the product ready!"
             loading="lazy"
           />
-          <h2>No te preocupes...</h2>
+          <h2>Y no, no te preocupes...</h2>
           <h2>que no pasaras hambre</h2>
           <img
             style={{
