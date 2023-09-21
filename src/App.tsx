@@ -123,7 +123,11 @@ function App() {
             <Fade in={assisting} unmountOnExit>
               <div>
                 <span>
-                  Vendras acompa&ntilde;ado/a?{" "}
+                  No se si lo sabras, pero tambien hemos invitado a:
+                  <ul>
+                    {guest.relatives.map((name, index) => (<li key={index}>{name}</li>))}
+                  </ul>
+                  Vendras acompa&ntilde;ado/a con alguien mas a parte de la gente que ya hemos invitado?{" "}
                   <RadioGroup
                     row
                     value={more ?? ""}

@@ -25,15 +25,28 @@ exports.handler = async (event, context) => {
     try {
         switch (event.httpMethod) {
             case 'OPTIONS':
-             return {
-                 statusCode,
-                 headers
-             }
+                return {
+                    statusCode,
+                    headers
+                }
             case 'GET':
                 body = await dynamo.get({
                     TableName: 'People',
                     Key: { id: event.pathParameters.id }
                 }).promise();
+                if (body.Item?.relatives) {
+                    const relatives = await dynamo.scan({
+                        TableName: 'People',
+                        AttributesToGet: ['name'],
+                        ScanFilter: {
+                            'id': {
+                                ComparisonOperator: 'IN',
+                                AttributeValueList: body.Item.relatives
+                            }
+                        }
+                    }).promise()
+                    body.Item?.relatives = relatives.Items?.map(({ name }) => name)
+                }
                 break;
             case 'PATCH':
                 const payload = JSON.parse(event.body)

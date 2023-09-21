@@ -5,12 +5,12 @@ export interface GuestContainer {
 }
 
 export interface Guest {
-  phoneNumber: string;
   id: string;
   name: string;
   isAssisting: boolean;
   additionalPeople: number;
   address?: string;
+  relatives: string[];
 }
 
 export const readGuest = async (userId: string): Promise<GuestContainer> => {
